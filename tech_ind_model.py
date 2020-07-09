@@ -9,10 +9,17 @@ import tensorflow
 tensorflow.random.set_seed(4)
 from util import csv_to_dataset, history_points
 
+import argparse
+
+parser = argparse.ArgumentParser(description='File to process')
+parser.add_argument('dataFile', help='Data source file path')
+parser.add_argument('saveToFile', help='Where to save the built model')
+
+args = parser.parse_args()
 
 # dataset
 
-ohlcv_histories, technical_indicators, next_day_open_values, unscaled_y, y_normaliser = csv_to_dataset('MSFT_daily.csv')
+ohlcv_histories, technical_indicators, next_day_open_values, unscaled_y, y_normaliser = csv_to_dataset(args.dataFile)
 
 test_split = 0.9
 n = int(ohlcv_histories.shape[0] * test_split)
@@ -91,4 +98,7 @@ plt.legend(['Real', 'Predicted'])
 plt.show()
 
 from datetime import datetime
-model.save(f'technical_model.h5')
+
+saveFile = 'Technical_' + args.saveToFile + '.h5'
+
+model.save(saveFile or f'technical_model.h5')

@@ -31,11 +31,10 @@ A stock trading bot that uses machine learning to make price predictions.
 4. Install required packages `pipenv install`
 5. Setup `.env` File
 6. Save the stock price history to a csv file `python save_data_to_csv.py --help`
-7. Edit one of the model files to accept the symbol you want
-8. Edit model architecture
-9. Edit dataset preprocessing / history_points inside util.py
-10. Train the model `python tech_ind_model.py` or `python basic_model.py`
-11. Try the trading algorithm on the newly saved model `python trading_algo.py`
+7. Optional - Edit model architecture
+8. Edit dataset preprocessing / history_points inside util.py
+9. Train the model `python tech_ind_model.py --help` or `python basic_model.py --help`
+10. Try the trading algorithm on the newly saved model `python trading_algo.py`
 
 ## License
 
